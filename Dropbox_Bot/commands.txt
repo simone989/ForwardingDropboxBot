@@ -1,0 +1,2 @@
+Informazioni bot=Bot sviluppato da @0xVinz e @sinoneCoglione
+Ciao=Ciao, nome
