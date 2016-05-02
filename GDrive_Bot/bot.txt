@@ -1,0 +1,2 @@
+Ciao=Ciao
+Comandi=I comandi sono: 1) Ciao. 2) Comandi.
