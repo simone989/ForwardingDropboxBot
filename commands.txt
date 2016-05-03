@@ -1,4 +1,0 @@
-Ciao=Ciao
-info=Informazioni
-provabot=provareload
-aa=bb
