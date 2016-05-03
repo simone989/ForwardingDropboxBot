@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import telegram
-from classes.botresponse import Response
+from classes.botresponse import *
 
 
 TOKEN  = '179093943:AAFaUKS559e-SnAoja-4iUnXfA_M0CJZUiw'
@@ -21,24 +21,38 @@ except IndexError:
 LAST_UPDATE_ID = update_id
 last_text = ""
 NOFOUND_MESSAGE="Comando non riconosciuto"
+waitingToken = False
 try:
 	while True:
 		messageText = ""
-		for update in bot.getUpdates(offset=LAST_UPDATE_ID, timeout=2):
-
+		for update in bot.getUpdates(offset=LAST_UPDATE_ID, timeout=20):
 			text = update.message.text
 			chat_id = update.message.chat.id
 			update_id = update.update_id
+			print(update.message.from_user.username+" Ha scritto: "+text)
 			messageText = msgManager.responseText(text)
+			if(waitingToken == True):
+				print ("WaitingTOKEN OPEN")
+				dropboxToken = text.split(" ")	
+				
+				if(dropboxToken[0] == "/token"):
+					print ("Dropbox token: "+dropboxToken[0])			
+					sessionDropbox = NewSession(dropboxToken[1])
+					if(sessionDropbox.startAuth() == True):
+						messageText = "Sessione valida. Sei autenticato"
+						waitingToken = False
 			if(text == "/reload"):
 				if(msgManager.reloadFile()):
 					messageText = "Reload effettuato correttamente."
 				else:
 					messageText = "Errore nel reload"
-			if(messageText == False):
+			elif(text == "/startservice"):
+				messageText = "Inserisci ora il token - /token <authentication token> (senza parentesi angolari)"
+				waitingToken = True
+			elif(messageText == False):
 				messageText = NOFOUND_MESSAGE
-			else:
-				bot.sendMessage(chat_id=chat_id, text=messageText)
+			print ("Risposta: "+messageText)
+			bot.sendMessage(chat_id=chat_id, text=messageText)
 			LAST_UPDATE_ID = update_id + 1
 			text = ""
 

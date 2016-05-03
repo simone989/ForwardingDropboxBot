@@ -21,3 +21,13 @@ URLError: [Errno 101] Network is unreachable
 [Error : 400 : Bad Request: Message text is empty] (400)
 Timed out
 Timed out
+URLError: _ssl.c:584: The handshake operation timed out
+URLError: _ssl.c:584: The handshake operation timed out
+URLError: _ssl.c:584: The handshake operation timed out
+'str' object cannot be interpreted as an integer
+'str' object cannot be interpreted as an integer
+name 'token' is not defined
+'oauth2_access_token' must either be a string or a DropboxSession
+Can't convert 'list' object to str implicitly
+'oauth2_access_token' must either be a string or a DropboxSession
+list index out of range

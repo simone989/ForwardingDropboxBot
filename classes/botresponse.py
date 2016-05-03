@@ -19,29 +19,41 @@ class Response(object):
 	def responseText(self,command):
 		for lines in self.textLines:
 			lineSplitted = lines.split("=")
-			if(self.isCommand(lineSplitted[0],command) == True): 
+			if(self.isCommand(command,lineSplitted[0]) == True): 
 				return lineSplitted[1]
 		return False
 
 
 	def isCommand(self,textCommand, fileCommand):
-		if(textCommand == fileCommand):
-			return True
-		elif("/"+textCommand == fileCommand):
+		#if(textCommand == fileCommand):
+			#return True
+		#elif
+		print ("Comando del file: /"+fileCommand)
+		if(textCommand == "/"+fileCommand):
 			return True
 		return False
+
 	def reloadFile(self):
 		try:
+			self.responseFile = open("commands.txt","r")
 			self.textLines = []
 			self.fromFileToList()
 			return True
 		except Exception as error:
+			print (error) #debug
 			return False
 
 class NewSession(object):
 	def __init__(self,token):
 		self.token = token
+		print ("DEBUG Inizializzazione classe NewSession")
+		print ("SELF TOKEN: "+str(self.token))
 
 	def startAuth(self):
-		client = dropbox.client.DropboxClient(token)
-		return client.account_info()
+		client = dropbox.client.DropboxClient(self.token)
+		try:
+			client.account_info()
+			return True
+		except Exception as error:
+			print (error)
+			return False
