@@ -24,34 +24,12 @@ NOFOUND_MESSAGE="Comando non riconosciuto"
 waitingToken = False
 try:
 	while True:
-		messageText = ""
+		messageText = "" #Inizializzazione necessaria per evitare conflitti con messaggi vuoti (eventuali).
 		for update in bot.getUpdates(offset=LAST_UPDATE_ID, timeout=20):
 			text = update.message.text
 			chat_id = update.message.chat.id
 			update_id = update.update_id
-			print(update.message.from_user.username+" Ha scritto: "+text)
-			messageText = msgManager.responseText(text)
-			if(waitingToken == True):
-				print ("WaitingTOKEN OPEN")
-				dropboxToken = text.split(" ")
-
-				if(dropboxToken[0] == "/token"):
-					print ("Dropbox token: "+dropboxToken[0])
-					sessionDropbox = NewSession(dropboxToken[1])
-					if(sessionDropbox.startAuth() == True):
-						messageText = "Sessione valida. Sei autenticato"
-						waitingToken = False
-			if(text == "/reload"):
-				if(msgManager.reloadFile()):
-					messageText = "Reload effettuato correttamente."
-				else:
-					messageText = "Errore nel reload"
-			elif(text == "/startservice"):
-				messageText = "Inserisci ora il token - /token <authentication token> (senza parentesi angolari)"
-				waitingToken = True
-			elif(messageText == False):
-				messageText = NOFOUND_MESSAGE
-			print ("Risposta: "+messageText)
+			messageText = msgManager.executeCommand(text)
 			bot.sendMessage(chat_id=chat_id, text=messageText)
 			LAST_UPDATE_ID = update_id + 1
 			text = ""

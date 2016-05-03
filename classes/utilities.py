@@ -44,6 +44,8 @@ class Response(object):
 			return False
 
 class CommandManager(object):
+	def __init__(self):
+		self.errorMessage = "Comando non riconosciuto"
 	def executeCommand(self,command):
 		command = self.parseCommand(command)
 		if(command == "/start"):
@@ -51,13 +53,13 @@ class CommandManager(object):
 			return ""
 		elif (command == "/info"):
 			return "Bot creato da @xVinz e @simone989"
-
+		else:
+			return self.errorMessage
 	def parseCommand(self,command):
 		if(command.startswith("/")):
 			return command 
 		else:
 			return "/"+command.lower()
-	
 
 class NewSession(object):
 	def __init__(self,token):
