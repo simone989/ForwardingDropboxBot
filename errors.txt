@@ -1,0 +1,23 @@
+name 'LAST_UPDATE_ID' is not defined
+name 'text' is not defined
+URLError: _ssl.c:584: The handshake operation timed out
+'str' object has no attribute 'startwith'
+'str' object has no attribute 'startwith'
+'str' object has no attribute 'startwith'
+'str' object has no attribute 'startwith'
+'str' object has no attribute 'startwith'
+'str' object has no attribute 'startwith'
+'str' object has no attribute 'startwith'
+'str' object has no attribute 'startwith'
+'str' object has no attribute 'startwith'
+URLError: [Errno 101] Network is unreachable
+[Error : 400 : Bad Request: Message text is empty] (400)
+[Error : 400 : Bad Request: Message text is empty] (400)
+[Error : 400 : Bad Request: Message text is empty] (400)
+[Error : 400 : Bad Request: Message text is empty] (400)
+[Error : 400 : Bad Request: Message text is empty] (400)
+[Error : 400 : Bad Request: Message text is empty] (400)
+[Error : 400 : Bad Request: Message text is empty] (400)
+[Error : 400 : Bad Request: Message text is empty] (400)
+Timed out
+Timed out
