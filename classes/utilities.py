@@ -45,7 +45,7 @@ class Response(object):
 
 class CommandManager(object):
 	def executeCommand(self,command):
-		command = self.parseCommand(command)m
+		command = self.parseCommand(command)
 		if(command == "/start"):
 			print ("Debug metodo. Per evitare il loop")
 			return ""
@@ -55,7 +55,7 @@ class CommandManager(object):
 	def parseCommand(self,command):
 		if(command.startswith("/")):
 			return command 
-		elif
+		else:
 			return "/"+command.lower()
 	
 
