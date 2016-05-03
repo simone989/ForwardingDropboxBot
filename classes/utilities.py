@@ -50,7 +50,7 @@ class CommandManager(object):
 		command = self.parseCommand(command)
 		if(command == "/start"):
 			print ("Debug metodo. Per evitare il loop")
-			return ""
+			return "Started"
 		elif (command == "/info"):
 			return "Bot creato da @xVinz e @simone989"
 		else:
@@ -61,6 +61,8 @@ class CommandManager(object):
 		else:
 			return "/"+command.lower()
 
+	def DEBUGlog(self,fromuser,command):
+		print("Utente: "+ fromuser +" ha digitato: "+command)
 class NewSession(object):
 	def __init__(self,token):
 		self.token = token
