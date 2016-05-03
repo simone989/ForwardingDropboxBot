@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import telegram
-from classes.botresponse import *
+from classes.utilities import *
 
 
 TOKEN  = '179093943:AAFaUKS559e-SnAoja-4iUnXfA_M0CJZUiw'
@@ -8,7 +8,7 @@ TOKEN  = '179093943:AAFaUKS559e-SnAoja-4iUnXfA_M0CJZUiw'
 logs = 1 #disable/enable chatid logs (1 enabled, 0 disabled)
 
 news = "News"
-msgManager = Response()
+msgManager = CommandManager()
 bot = telegram.Bot(TOKEN)
 
 #debugging
@@ -33,10 +33,10 @@ try:
 			messageText = msgManager.responseText(text)
 			if(waitingToken == True):
 				print ("WaitingTOKEN OPEN")
-				dropboxToken = text.split(" ")	
-				
+				dropboxToken = text.split(" ")
+
 				if(dropboxToken[0] == "/token"):
-					print ("Dropbox token: "+dropboxToken[0])			
+					print ("Dropbox token: "+dropboxToken[0])
 					sessionDropbox = NewSession(dropboxToken[1])
 					if(sessionDropbox.startAuth() == True):
 						messageText = "Sessione valida. Sei autenticato"
@@ -59,4 +59,3 @@ try:
 except Exception as error:
 	print (str(error))
 	open("errors.txt", "a+").write(str(error)+"\n")
-
