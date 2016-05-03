@@ -43,6 +43,22 @@ class Response(object):
 			print (error) #debug
 			return False
 
+class CommandManager(object):
+	def executeCommand(self,command):
+		command = self.parseCommand(command)m
+		if(command == "/start"):
+			print ("Debug metodo. Per evitare il loop")
+			return ""
+		elif (command == "/info"):
+			return "Bot creato da @xVinz e @simone989"
+
+	def parseCommand(self,command):
+		if(command.startswith("/")):
+			return command 
+		elif
+			return "/"+command.lower()
+	
+
 class NewSession(object):
 	def __init__(self,token):
 		self.token = token
