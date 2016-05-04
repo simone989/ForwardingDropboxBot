@@ -4,3 +4,4 @@ name 'dropboxSession' is not defined
 name 'sessionOpen' is not defined
 name 'dropboxSession' is not defined
 name 'isAuthenticated' is not defined
+invalid format for oauth2_access_token: '<f3f3d3ff4>'

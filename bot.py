@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 import telegram
 from classes.utilities import *
+from classes.DatabaseManager import *
 
 
 TOKEN  = '179093943:AAFaUKS559e-SnAoja-4iUnXfA_M0CJZUiw'
