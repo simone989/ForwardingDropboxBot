@@ -30,6 +30,7 @@ try:
 			chat_id = update.message.chat.id
 			update_id = update.update_id
 			messageText = msgManager.executeCommand(text,update.message.from_user)
+
 			msgManager.DEBUGlog(update.message.from_user.username,text)
 			bot.sendMessage(chat_id=chat_id, text=messageText)
 			LAST_UPDATE_ID = update_id + 1

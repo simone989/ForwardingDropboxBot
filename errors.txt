@@ -3,3 +3,4 @@ name 'dropboxSession' is not defined
 name 'dropboxSession' is not defined
 name 'sessionOpen' is not defined
 name 'dropboxSession' is not defined
+name 'isAuthenticated' is not defined

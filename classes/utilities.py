@@ -58,7 +58,8 @@ class CommandManager(object):
 		else:
 			if(command.startswith("/token")):
 				return "Iniziare una sessione con /startsession prima di continuare."
-
+			if(command == "/listFiles"):
+				return self.dropboxSession.listOfFile()
 		if(command == "/start"):
 			print ("Debug metodo. Per evitare il loop")
 			return "Started"
@@ -93,12 +94,23 @@ class NewSession(object):
 		print ("DEBUG Inizializzazione classe NewSession")
 
 	def startAuth(self):
-		client = dropbox.client.DropboxClient(self.token)
-		try:
-			client.account_info()
-			self.isAuthenticated = True
+		self.client = dropbox.client.DropboxClient(self.token)
+		self.checkAuthentication()
+		if(self.isAuthenticated):
 			self.waitingToken = False
-			return "Autenticazione eseguita"
-		except Exception as error:
+			return "Autenticazione eseguita correttamente."
+		else:
 			self.waitingToken = True
-			return "Errore nell'inserimento del token"
+			return "Errore nell'inserimento del token."
+
+	def checkAuthentication(self):
+		try:
+			self.client.account_info()
+			self.isAuthenticated = True
+
+		except Exception as error:
+			self.isAuthenticated = False
+
+	def listOfFile(self):#Da continuare
+		folderMetadata = client.metadata('/')
+		return folderMetadata
