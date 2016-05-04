@@ -1,1 +1,5 @@
 [Error : 400 : Bad Request: Message text is empty] (400)
+name 'dropboxSession' is not defined
+name 'dropboxSession' is not defined
+name 'sessionOpen' is not defined
+name 'dropboxSession' is not defined
