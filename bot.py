@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 import telegram
-from classes.utilities import *
+from classes.Utilities import *
 from classes.DatabaseManager import *
 
 
