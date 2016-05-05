@@ -52,7 +52,7 @@ class DatabaseManager(object):
                 return False
         else:
             return False
-    def dropWitchUser(self,UserName):
+    def dropWhichUser(self,UserName):
         sql="DELETE FROM Utenti Where Username='"+UserName+"'"
         result=self.cursor.execute(sql)
         self.db.commit()
@@ -60,7 +60,7 @@ class DatabaseManager(object):
             return True
         else:
             return False
-    def dropWitchChatId(self,ChatId):
+    def dropWhichChatId(self,ChatId):
         sql="DELETE FROM Utenti Where ChatId= "+str(ChatId)
         result=self.cursor.execute(sql)
         self.db.commit()
@@ -68,7 +68,7 @@ class DatabaseManager(object):
             return True
         else:
             return False
-    def dropWitchToken(self,Token):
+    def dropWhichToken(self,Token):
         sql="DELETE FROM Utenti Where Token='"+Token+"'"
         result=self.cursor.execute(sql)
         self.db.commit()
@@ -76,7 +76,7 @@ class DatabaseManager(object):
             return True
         else:
             return False
-    def getTokenWitchUsername(self,Username):
+    def getTokenWhichUsername(self,Username):
         sql="SELECT Token FROM Utenti WHERE Username ='"+Username+"'"
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
@@ -86,7 +86,7 @@ class DatabaseManager(object):
                 return TokenDB
             else:
                 return False
-    def getTokenWitchChatId(self,ChatId):
+    def getTokenWhichChatId(self,ChatId):
         sql="SELECT Token FROM Utenti WHERE ChatId ="+str(ChatId)
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
@@ -96,7 +96,7 @@ class DatabaseManager(object):
                 return TokenDB
             else:
                 return False
-    def getUsernameWitchToken(self,Token):
+    def getUsernameWhichToken(self,Token):
         sql="SELECT Username FROM Utenti WHERE Token ='"+Token+"'"
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
@@ -106,7 +106,7 @@ class DatabaseManager(object):
                 return UsernameDB
             else:
                 return False
-    def getUsernameWitchChatId(self,ChatId):
+    def getUsernameWhichChatId(self,ChatId):
         sql="SELECT Username FROM Utenti WHERE ChatId ="+str(ChatId)
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
@@ -117,7 +117,7 @@ class DatabaseManager(object):
             else:
                 return False
                 #AGGIUNGERE IL GETCHAID CON IL TOKEN E USERNAME
-    def getChatIdWitchToken(self,Token):
+    def getChatIdWhichToken(self,Token):
         sql="SELECT ChatId  FROM Utenti WHERE Token ='"+Token+"'"
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
@@ -127,7 +127,7 @@ class DatabaseManager(object):
                 return ChatIdDB
             else:
                 return False
-    def getChatIdWitchUsername(self,Username):
+    def getChatIdWhichUsername(self,Username):
         sql="SELECT ChatId FROM Utenti WHERE ChatId ='"+Username+"'"
         self.cursor.execute(sql)
         result=self.cursor.fetchall()
@@ -146,7 +146,7 @@ class DatabaseManager(object):
     test=data.updateToken("test","fbeuffbfefen")
     test=data.chatidNotUsed(7535337)
     test=data.insertNewUser("ciao2",74537,"efufenudbeud")
-    test=data.dropWitchToken("efufenudbeud")
+    test=data.dropWhichToken("efufenudbeud")
 """
 
 
@@ -158,7 +158,7 @@ data=DatabaseManager()
 
 try:
 
-    test=data.getTokenWitchChatId(753537)
+    test=data.getTokenWhichChatId(753537)
     print(test)
 except Exception as error:
     print (error)
