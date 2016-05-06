@@ -76,7 +76,7 @@ class CommandManager(object):
 	def parseCommand(self,command):
 		command = command.split(" ")
 		if(len(command) > 1):
-			command = str(command[0]).lower()+" "+str(command[1])
+			command = str(command[0]).lower()+" "+str(command[1:])
 		else:
 			command = str(command[0]).lower()
 
