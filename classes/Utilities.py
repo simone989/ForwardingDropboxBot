@@ -53,13 +53,13 @@ class CommandManager(object):
 		if(self.sessionOpen):
 			if(self.dropboxSession.waitingToken == True and command.split(" ")[0] == "/token"):
 				self.dropboxSession.token = command.split(" ")[1]
-				
 				return self.dropboxSession.startAuth()
+			if(command == "/listFiles"):
+				return self.dropboxSession.listOfFile()
 		else:
 			if(command.startswith("/token")):
 				return "Iniziare una sessione con /startsession prima di continuare."
-			if(command == "/listFiles"):
-				return self.dropboxSession.listOfFile()
+			
 		if(command == "/start"):
 			print ("Debug metodo. Per evitare il loop")
 			return "Started"
@@ -74,10 +74,17 @@ class CommandManager(object):
 		else:
 			return self.errorMessage
 	def parseCommand(self,command):
-		if(command.startswith("/")):
-			return command 
+		command = command.split(" ")
+		if(len(command) > 1):
+			command = str(command[0]).lower()+" "+str(command[1])
 		else:
-			return "/"+command.lower()
+			command = str(command[0]).lower()
+
+		print (str(command))
+		if(command.startswith("/")):
+			return str(command) 
+		else:
+			return "/"+str(command)
 
 	def startSession(self,user):
 		self.sessionOpen = True
@@ -112,5 +119,5 @@ class NewSession(object):
 			self.isAuthenticated = False
 
 	def listOfFile(self):#Da continuare
-		folderMetadata = client.metadata('/')
+		folderMetadata = self.client.metadata('/')
 		return folderMetadata
