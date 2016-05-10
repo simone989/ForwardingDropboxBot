@@ -54,7 +54,7 @@ class CommandManager(object):
 			if(self.dropboxSession.waitingToken == True and command.split(" ")[0] == "/token"):
 				self.dropboxSession.token = command.split(" ")[1]
 				return self.dropboxSession.startAuth()
-			if(command == "/listFiles"):
+			if(command == "/listfiles"):
 				return self.dropboxSession.listOfFile()
 		else:
 			if(command.startswith("/token")):
@@ -76,15 +76,12 @@ class CommandManager(object):
 	def parseCommand(self,command):
 		command = command.split(" ")
 		if(len(command) > 1):
-			command = str(command[0]).lower()+" "+str(command[1:])
+			command = str(command[0]).lower()+" "+str(command[1])
 		else:
 			command = str(command[0]).lower()
 
 		print (str(command))
-		if(command.startswith("/")):
-			return str(command) 
-		else:
-			return "/"+str(command)
+		return command
 
 	def startSession(self,user):
 		self.sessionOpen = True
